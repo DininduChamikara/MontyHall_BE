@@ -12,11 +12,13 @@
         public List<DoorDto> InitialState { get; set; }
         public List<DoorDto> FirstDoorOpenState { get; set; }
         public List<DoorDto> SecondDoorOpenState { get; set; }
+        public List<DoorDto> FinalState { get; set; }
         public string Won { get; set; }
     }
 
     public class DoorDto
     {
+        public int Id { get; set; }
         public string? Obj { get; set; }
         public string? Status { get; set; }
     }

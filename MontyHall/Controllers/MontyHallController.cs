@@ -53,6 +53,9 @@ namespace MontyHall.Controllers
                     goatWinCount++;
                 }
 
+                currentDoors.ForEach(i => i.Status = "Open");
+                iteration.FinalState = copyCurrentDoorsState(currentDoors);
+
                 iterationList.Add(iteration);
             }
 
@@ -71,14 +74,14 @@ namespace MontyHall.Controllers
 
         private List<DoorDto> copyCurrentDoorsState( List<DoorDto> currentDoors)
         {
-            return currentDoors.ConvertAll(door => new DoorDto() { Obj = door.Obj, Status = door.Status });
+            return currentDoors.ConvertAll(door => new DoorDto() { Id=door.Id, Obj = door.Obj, Status = door.Status });
         }
 
         private List<DoorDto> InitSimulation () {
             // Create instances of DoorDto
-            DoorDto door1 = new DoorDto { Obj = "Goat", Status = "Closed" };
-            DoorDto door2 = new DoorDto { Obj = "Goat", Status = "Closed" };
-            DoorDto door3 = new DoorDto { Obj = "Car", Status = "Closed" };
+            DoorDto door1 = new DoorDto { Id = 1, Obj = "Goat", Status = "Closed" };
+            DoorDto door2 = new DoorDto { Id = 2, Obj = "Goat", Status = "Closed" };
+            DoorDto door3 = new DoorDto { Id = 3, Obj = "Car", Status = "Closed" };
 
             List<DoorDto> doors = new List<DoorDto>();
             doors.Add(door1);
